@@ -33,6 +33,10 @@
 #ifndef YSF_ADDRESSES_H
 #define YSF_ADDRESSES_H
 
+#include <type_traits>
+#include <exception>
+#include "CFunctions.h"
+
 #ifdef _WIN32
 	#define RAKNET_START_OFFSET							1
 	#define RAKNET_SEND_OFFSET							7
@@ -75,6 +79,7 @@ enum class SAMPVersion
 	VERSION_UNKNOWN,
 	VERSION_037,
 	VERSION_037_R2,
+	VERSION_03DL_R1
 };
 
 class CAddress
@@ -89,6 +94,7 @@ public:
 	static DWORD			FUNC_Logprintf_037;
 	static DWORD			FUNC_Logprintf_037_R2;
 	static DWORD			FUNC_Logprintf_037_R2_1;
+	static DWORD			FUNC_Logprintf_03DL_R1;
 
 	// Variables
 	static DWORD			VAR_pRestartWaitTime;

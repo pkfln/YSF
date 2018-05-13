@@ -906,52 +906,61 @@ void InstallPreHooks()
 {
 	logprintf("[PEEK] Debug Prehook #1\n");
 	SetWeather_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CNetGame__SetWeather), reinterpret_cast<void*>(HOOK_CNetGame__SetWeather), static_cast<subhook_options_t>(NULL));
-	logprintf("[PEEK] Debug Prehook #2\n");
 	subhook_install(SetWeather_hook);
-	logprintf("[PEEK] Debug Prehook #3\n");
-	
+
+	logprintf("[PEEK] Debug Prehook #2\n");
 	SetGravity_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CNetGame__SetGravity), reinterpret_cast<void*>(HOOK_CNetGame__SetGravity), static_cast<subhook_options_t>(NULL));
 	subhook_install(SetGravity_hook);
 
-	logprintf("[PEEK] Debug Prehook #4\n");
-
+	logprintf("[PEEK] Debug Prehook #3\n");
 	Namecheck_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_ContainsInvalidChars), reinterpret_cast<void*>(HOOK_ContainsInvalidChars), static_cast<subhook_options_t>(NULL));
 	subhook_install(Namecheck_hook);
 
+	logprintf("[PEEK] Debug Prehook #4\n");
 	amx_Register_hook = subhook_new(reinterpret_cast<void*>(*(DWORD*)((DWORD)pAMXFunctions + (PLUGIN_AMX_EXPORT_Register * 4))), reinterpret_cast<void*>(HOOK_amx_Register), static_cast<subhook_options_t>(NULL));
 	subhook_install(amx_Register_hook);
 	
+	logprintf("[PEEK] Debug Prehook #5\n");
 	query_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_ProcessQueryPacket), reinterpret_cast<void*>(HOOK_ProcessQueryPacket), static_cast<subhook_options_t>(NULL));
 	subhook_install(query_hook);
 
+	logprintf("[PEEK] Debug Prehook #6\n");
 	CVehicle__Respawn_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CVehicle__Respawn), reinterpret_cast<void*>(HOOK_CVehicle__Respawn), static_cast<subhook_options_t>(NULL));
 	subhook_install(CVehicle__Respawn_hook);
 
 	// Callback hooks
+	logprintf("[PEEK] Debug Prehook #7\n");
 	CGameMode__OnPlayerConnect_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CGameMode__OnPlayerConnect), reinterpret_cast<void*>(HOOK_CGameMode__OnPlayerConnect), static_cast<subhook_options_t>(NULL));
 	subhook_install(CGameMode__OnPlayerConnect_hook);
 	
+	logprintf("[PEEK] Debug Prehook #8\n");
 	CGameMode__OnPlayerDisconnect_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CGameMode__OnPlayerDisconnect), reinterpret_cast<void*>(HOOK_CGameMode__OnPlayerDisconnect), static_cast<subhook_options_t>(NULL));
 	subhook_install(CGameMode__OnPlayerDisconnect_hook);
 
+	logprintf("[PEEK] Debug Prehook #9\n");
 	CGameMode__OnPlayerSpawn_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CGameMode__OnPlayerSpawn), reinterpret_cast<void*>(HOOK_CGameMode__OnPlayerSpawn), static_cast<subhook_options_t>(NULL));
 	subhook_install(CGameMode__OnPlayerSpawn_hook);
 
+	logprintf("[PEEK] Debug Prehook #10\n");
 	CGameMode__OnPlayerStreamIn_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CGameMode__OnPlayerStreamIn), reinterpret_cast<void*>(HOOK_CGameMode__OnPlayerStreamIn), static_cast<subhook_options_t>(NULL));
 	subhook_install(CGameMode__OnPlayerStreamIn_hook);
 
+	logprintf("[PEEK] Debug Prehook #11\n");
 	CGameMode__OnPlayerStreamOut_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CGameMode__OnPlayerStreamOut), reinterpret_cast<void*>(HOOK_CGameMode__OnPlayerStreamOut), static_cast<subhook_options_t>(NULL));
 	subhook_install(CGameMode__OnPlayerStreamOut_hook);
 
+	logprintf("[PEEK] Debug Prehook #12\n");
 	CGameMode__OnDialogResponse_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CGameMode__OnDialogResponse), reinterpret_cast<void*>(HOOK_CGameMode__OnDialogResponse), static_cast<subhook_options_t>(NULL));
 	subhook_install(CGameMode__OnDialogResponse_hook);
 
+	logprintf("[PEEK] Debug Prehook #13\n");
 	if(CAddress::ADDR_RecordingDirectory)
 	{
 		strcpy(gRecordingDataPath, "scriptfiles/%s.rec");
 		Unlock((void*)CAddress::ADDR_RecordingDirectory, 5);
 		*(DWORD*)(CAddress::ADDR_RecordingDirectory + 1) = (DWORD)&gRecordingDataPath;
 	}
+	logprintf("[PEEK] Debug Prehook #14\n");
 }
 
 // Things that needs to be hooked after netgame initialied

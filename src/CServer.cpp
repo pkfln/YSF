@@ -80,6 +80,8 @@ void CServer::Initialize(SAMPVersion version)
 	}
 	m_vecValidNameCharacters.insert({ ']', '[', '_', '$', '=', '(', ')', '@', '.' });
 
+	logprintf("[PEEK] Debug #9\n");
+
 	// Create mirror from SAMP server's internal array of console commands
 	ConsoleCommand_s *cmds = (ConsoleCommand_s*)CAddress::ARRAY_ConsoleCommands;
 	do
@@ -88,6 +90,8 @@ void CServer::Initialize(SAMPVersion version)
 		cmds++;
 	} while (cmds->szName[0] && !cmds->dwFlags);
 	//logprintf("cussess");
+
+	logprintf("[PEEK] Debug #10\n");
 }
 
 CServer::~CServer()

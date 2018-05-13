@@ -904,11 +904,16 @@ int CDECL HOOK_CGameMode__OnDialogResponse(CGameMode *thisptr, cell playerid, ce
 // Things that needs to be hooked before netgame initialied
 void InstallPreHooks()
 {
+	logprintf("[PEEK] Debug Prehook #1\n");
 	SetWeather_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CNetGame__SetWeather), reinterpret_cast<void*>(HOOK_CNetGame__SetWeather), static_cast<subhook_options_t>(NULL));
+	logprintf("[PEEK] Debug Prehook #2\n");
 	subhook_install(SetWeather_hook);
+	logprintf("[PEEK] Debug Prehook #3\n");
 	
 	SetGravity_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CNetGame__SetGravity), reinterpret_cast<void*>(HOOK_CNetGame__SetGravity), static_cast<subhook_options_t>(NULL));
 	subhook_install(SetGravity_hook);
+
+	logprintf("[PEEK] Debug Prehook #4\n");
 
 	Namecheck_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_ContainsInvalidChars), reinterpret_cast<void*>(HOOK_ContainsInvalidChars), static_cast<subhook_options_t>(NULL));
 	subhook_install(Namecheck_hook);

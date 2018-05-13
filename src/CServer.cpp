@@ -57,10 +57,13 @@ void CServer::Initialize(SAMPVersion version)
 
 	// Initialize addresses
 	CAddress::Initialize(version);
+	logprintf("[PEEK] Debug #6\n");
 	// Initialize SAMP Function
 	CSAMPFunctions::PreInitialize();
+	logprintf("[PEEK] Debug #7\n");
 	// Install pre-hooks
 	InstallPreHooks();
+	logprintf("[PEEK] Debug #8\n");
 
 	// Initialize default valid name characters
 	for(BYTE i = '0'; i <= '9'; ++i)

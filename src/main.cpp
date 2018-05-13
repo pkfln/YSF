@@ -62,6 +62,8 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void ** ppData)
 	logprintf = reinterpret_cast<logprintf_t>(ppData[PLUGIN_DATA_LOGPRINTF]);
 	//logprintf("logprintf = 0x%08X\n", ppData[PLUGIN_DATA_LOGPRINTF]);
 	
+	logprintf("[PEEK] Debug #1\n");
+
 	// Check server version
 	SAMPVersion version = SAMPVersion::VERSION_UNKNOWN;
 	char szVersion[64];
@@ -71,6 +73,7 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void ** ppData)
 	{
 		version = SAMPVersion::VERSION_03DL_R1;
 		strcpy(szVersion, "0.3.DL R1");
+		logprintf("[PEEK] Debug #2\n");
 	}
 	else if (addr == CAddress::FUNC_Logprintf_037_R2_1)
 	{
@@ -85,7 +88,9 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void ** ppData)
 
 	if (version != SAMPVersion::VERSION_UNKNOWN)
 	{
+		logprintf("[PEEK] Debug #3\n");
 		CServer::Get()->Initialize(version);
+		logprintf("[PEEK] Debug #4\n");
 		
 		logprintf("\n");
 		logprintf(" ===============================\n");

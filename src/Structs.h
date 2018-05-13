@@ -486,9 +486,9 @@ struct CPlayerSpawnInfo
 {
 	BYTE			byteTeam;				// 0 - 1
 	int				iSkin;					// 1 - 5
-#ifdef SAMP_03DL
+/*#ifdef SAMP_03DL
 	DWORD			dwCustomSkin;
-#endif
+#endif*/
 	BYTE			unk;					// 5 - 6
 	CVector			vecPos;					// 6 - 18
 	float			fRotation;				// 18 - 22
@@ -498,7 +498,8 @@ struct CPlayerSpawnInfo
 #ifndef SAMP_03DL
 static_assert(sizeof(CPlayerSpawnInfo) == 46, "Invalid CPlayerSpawnInfo size");
 #else
-static_assert(sizeof(CPlayerSpawnInfo) == 50, "Invalid CPlayerSpawnInfo size");
+//static_assert(sizeof(CPlayerSpawnInfo) == 50, "Invalid CPlayerSpawnInfo size");
+static_assert(sizeof(CPlayerSpawnInfo) == 46, "Invalid CPlayerSpawnInfo size"); // keep size
 #endif
 
 struct CBulletSyncData
@@ -1063,9 +1064,9 @@ static_assert(sizeof(CNetGame) == 16096, "Invalid CNetGame size");
 #endif
 #endif
 
-enum MODEL_TYPE : BYTE { MODEL_TYPE_CHAR = 1, MODEL_TYPE_SIMPLE = 2 };
+//enum MODEL_TYPE : BYTE { MODEL_TYPE_CHAR = 1, MODEL_TYPE_SIMPLE = 2 };
 
-struct CModelInfo
+/*struct CModelInfo
 {
 	MODEL_TYPE bType;				// 0 - 1
 	DWORD dwVirtualWorld;			// 1 - 5
@@ -1095,6 +1096,6 @@ struct CArtInfo
 	BYTE bUnknown;				// 260 - 261
 	CArtList artList;			// 261 - 269
 };
-static_assert(sizeof(CArtInfo) == 269, "Invalid CArtInfo size");;
+static_assert(sizeof(CArtInfo) == 269, "Invalid CArtInfo size");;*/
 
 #endif

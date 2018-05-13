@@ -925,8 +925,8 @@ void InstallPreHooks()
 	subhook_install(query_hook);
 
 	logprintf("[PEEK] Debug Prehook #6\n");
-	CVehicle__Respawn_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CVehicle__Respawn), reinterpret_cast<void*>(HOOK_CVehicle__Respawn), static_cast<subhook_options_t>(NULL));
-	subhook_install(CVehicle__Respawn_hook);
+	//CVehicle__Respawn_hook = subhook_new(reinterpret_cast<void*>(CAddress::FUNC_CVehicle__Respawn), reinterpret_cast<void*>(HOOK_CVehicle__Respawn), static_cast<subhook_options_t>(NULL));
+	//subhook_install(CVehicle__Respawn_hook);
 
 	// Callback hooks
 	logprintf("[PEEK] Debug Prehook #7\n");

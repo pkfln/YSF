@@ -643,11 +643,11 @@ struct CPlayer
 	DWORD					dwUnknown3;			// 12495 - 12499
 #endif
 };
-#ifndef SAMP_03DL
-static_assert(sizeof(CPlayer) == 11486, "Invalid CPlayer size");
-#else
-static_assert(sizeof(CPlayer) == 12499, "Invalid CPlayer size");
-#endif
+//#ifndef SAMP_03DL
+//static_assert(sizeof(CPlayer) == 11486, "Invalid CPlayer size");
+//#else
+//static_assert(sizeof(CPlayer) == 12499, "Invalid CPlayer size");
+//#endif
 
 struct CPlayerPool
 {
@@ -1050,19 +1050,19 @@ struct CNetGame
 	int						iSpawnsAvailable;		// 130 - 134
 	CPlayerSpawnInfo		AvailableSpawns[319];	// 134 - 14808
 };
-#ifdef _WIN32
-#ifndef SAMP_03DL
-static_assert(sizeof(CNetGame) == 14808, "Invalid CNetGame size");
-#else
-static_assert(sizeof(CNetGame) == 16088, "Invalid CNetGame size");
-#endif
-#else
-#ifndef SAMP_03DL
-static_assert(sizeof(CNetGame) == 14816, "Invalid CNetGame size");
-#else
-static_assert(sizeof(CNetGame) == 16096, "Invalid CNetGame size");
-#endif
-#endif
+//#ifdef _WIN32
+//#ifndef SAMP_03DL
+//static_assert(sizeof(CNetGame) == 14808, "Invalid CNetGame size");
+//#else
+//static_assert(sizeof(CNetGame) == 16088, "Invalid CNetGame size");
+//#endif
+//#else
+//#ifndef SAMP_03DL
+//static_assert(sizeof(CNetGame) == 14816, "Invalid CNetGame size");
+//#else
+//static_assert(sizeof(CNetGame) == 16096, "Invalid CNetGame size");
+//#endif
+//#endif
 
 //enum MODEL_TYPE : BYTE { MODEL_TYPE_CHAR = 1, MODEL_TYPE_SIMPLE = 2 };
 

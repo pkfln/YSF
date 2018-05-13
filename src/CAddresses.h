@@ -33,10 +33,6 @@
 #ifndef YSF_ADDRESSES_H
 #define YSF_ADDRESSES_H
 
-#include <type_traits>
-#include <exception>
-#include "CFunctions.h"
-
 #ifdef _WIN32
 	#define RAKNET_START_OFFSET							1
 	#define RAKNET_SEND_OFFSET							7

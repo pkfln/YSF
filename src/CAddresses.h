@@ -74,6 +74,7 @@ enum class SAMPVersion
 	VERSION_UNKNOWN,
 	VERSION_037,
 	VERSION_037_R2,
+	VERSION_03DL_R1
 };
 
 class CAddress

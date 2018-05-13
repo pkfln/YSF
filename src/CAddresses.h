@@ -88,6 +88,7 @@ public:
 	static DWORD			FUNC_Logprintf_037;
 	static DWORD			FUNC_Logprintf_037_R2;
 	static DWORD			FUNC_Logprintf_037_R2_1;
+	static DWORD			FUNC_Logprintf_03DL_R1;
 
 	// Variables
 	static DWORD			VAR_pRestartWaitTime;
@@ -117,6 +118,7 @@ public:
 	static DWORD			FUNC_CPlayer__SpawnForWorld;
 	static DWORD			FUNC_CVehicle__Respawn;
 	static DWORD			FUNC_CPlayerPool__HandleVehicleRespawn;
+	static DWORD			FUNC_CObject__SpawnForPlayer;
 
 	static DWORD			FUNC_ProcessQueryPacket;
 	static DWORD			FUNC_Packet_WeaponsUpdate;

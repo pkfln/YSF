@@ -212,10 +212,7 @@ public:
 	DECLARE_FUNC_PTR(CConsole__Execute);
 
 	DECLARE_FUNC_PTR(CNetGame__SetWeather);
-	DECLARE_FUNC_PTR(CNetGame__SetGravity);
 
-	DECLARE_FUNC_PTR(CFilterscripts__LoadFilterscript);
-	DECLARE_FUNC_PTR(CFilterscripts__UnLoadFilterscript);
 	DECLARE_FUNC_PTR(ContainsInvalidChars);
 
 	DECLARE_FUNC_PTR(CPlayer__SpawnForWorld);

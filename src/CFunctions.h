@@ -75,10 +75,7 @@ typedef void (THISCALL *CConsole__SendRules_t)(void *pConsole, SOCKET s, char* d
 typedef void (THISCALL *CConsole__Execute_t)(void *pConsole, char* pExecLine);
 
 typedef void (THISCALL *CNetGame__SetWeather_t)(void *pNetGame, BYTE weatherid);
-typedef void (THISCALL *CNetGame__SetGravity_t)(void *pNetGame, float gravity);
 
-typedef bool (THISCALL *CFilterscripts__LoadFilterscript_t)(void *pFilterscriptPool, const char *szName);
-typedef bool (THISCALL *CFilterscripts__UnLoadFilterscript_t)(void *pFilterscriptPool, const char *szName);
 typedef bool (*ContainsInvalidChars_t)(char *szString);
 
 typedef void (THISCALL *CPlayer__SpawnForWorld_t)(void *pPlayer);
@@ -141,9 +138,6 @@ public:
 	static ConsoleVariable_s* FindVariable(char *szRule);
 	static void		SendRules(SOCKET s, char* data, const sockaddr_in* to, int tolen);
 	static void		Execute(char* pExecLine);
-
-	static bool		LoadFilterscript(const char *szName);
-	static bool		UnLoadFilterscript(const char *szName);
 	
 	static void		SpawnPlayer(int iPlayerId);
 
@@ -185,10 +179,6 @@ public:
 	DEFINE_FUNCTION_POINTER(CConsole__FindVariable);
 	DEFINE_FUNCTION_POINTER(CConsole__SendRules);
 	DEFINE_FUNCTION_POINTER(CConsole__Execute);
-
-	// Filterscripts
-	DEFINE_FUNCTION_POINTER(CFilterscripts__LoadFilterscript);
-	DEFINE_FUNCTION_POINTER(CFilterscripts__UnLoadFilterscript);
 
 	// Player
 	DEFINE_FUNCTION_POINTER(CPlayer__SpawnForWorld);

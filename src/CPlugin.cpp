@@ -273,52 +273,6 @@ bool CPlugin::IsValidNick(char *szName)
 	return true;
 }
 
-// Toggling rcon commands
-bool CPlugin::ChangeRCONCommandName(std::string const &strCmd, std::string const &strNewCmd)
-{
-	auto it = std::find(m_RCONCommands.begin(), m_RCONCommands.end(), strCmd);
-	if (it != m_RCONCommands.end())
-	{
-		if (strCmd == strNewCmd)
-			return 0;
-
-		auto pos = std::distance(m_RCONCommands.begin(), it);
-
-		// Find command in array by it's position in vector
-		ConsoleCommand_s *cmds = *CAddress::ARRAY_ConsoleCommands;
-		do
-		{
-			cmds++;
-		} while (cmds->szName[0] && !cmds->dwFlags && --pos != 0);
-
-		// Change RCON command in samp server's internal array
-		memcpy(cmds->szName, strNewCmd.c_str(), sizeof(cmds->szName));
-		return 1;
-	}
-	return 0;
-}
-
-bool CPlugin::GetRCONCommandName(std::string const &strCmd, std::string &strNewCmd)
-{
-	auto it = std::find(m_RCONCommands.begin(), m_RCONCommands.end(), strCmd);
-	if (it != m_RCONCommands.end())
-	{
-		auto pos = std::distance(m_RCONCommands.begin(), it);
-
-		// Find command in array by it's position in vector
-		ConsoleCommand_s *cmds = *CAddress::ARRAY_ConsoleCommands;
-		do
-		{
-			cmds++;
-		} while (cmds->szName[0] && !cmds->dwFlags && --pos != 0);
-
-		// Get changed RCON command
-		strNewCmd.append(cmds->szName);
-		return 1;
-	}
-	return 0;
-}
-
 // Broadcasting console messages to players
 void CPlugin::AddConsolePlayer(WORD playerid, DWORD color)
 {
@@ -728,12 +682,6 @@ void CPlugin::RebuildSyncData(RakNet::BitStream *bsSync, WORD toplayerid)
 		}
 	}
 
-}
-
-char* CPlugin::GetNPCCommandLine(WORD npcid)
-{
-	int pid = CServer::Get()->PlayerPool.Extra(npcid).iNPCProcessID;
-	return ::GetNPCCommandLine(pid);
 }
 
 int CPlugin::FindNPCProcessID(WORD npcid)

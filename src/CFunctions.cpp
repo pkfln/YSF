@@ -53,9 +53,6 @@ CConsole__FindVariable_t					CSAMPFunctions::pfn__CConsole__FindVariable = NULL;
 CConsole__SendRules_t						CSAMPFunctions::pfn__CConsole__SendRules = NULL;
 CConsole__Execute_t							CSAMPFunctions::pfn__CConsole__Execute = NULL;
 
-CFilterscripts__LoadFilterscript_t			CSAMPFunctions::pfn__CFilterscripts__LoadFilterscript = NULL;
-CFilterscripts__UnLoadFilterscript_t		CSAMPFunctions::pfn__CFilterscripts__UnLoadFilterscript = NULL;
-
 CPlayer__SpawnForWorld_t					CSAMPFunctions::pfn__CPlayer__SpawnForWorld = NULL;
 CPlayerPool__HandleVehicleRespawn_t			CSAMPFunctions::pfn__CPlayerPool__HandleVehicleRespawn = NULL;
 CObject__SpawnForPlayer_t					CSAMPFunctions::pfn__CObject__SpawnForPlayer = NULL;
@@ -93,9 +90,6 @@ void CSAMPFunctions::PreInitialize()
 	INIT_FPTR(CConsole__FindVariable);
 	INIT_FPTR(CConsole__SendRules);
 	INIT_FPTR(CConsole__Execute);
-
-	INIT_FPTR(CFilterscripts__LoadFilterscript);
-	INIT_FPTR(CFilterscripts__UnLoadFilterscript);
 
 	INIT_FPTR(CPlayer__SpawnForWorld);
 	INIT_FPTR(CPlayerPool__HandleVehicleRespawn);
@@ -199,16 +193,6 @@ void CSAMPFunctions::SendRules(SOCKET s, char* data, const sockaddr_in* to, int 
 void CSAMPFunctions::Execute(char* pExecLine)
 {
 	CAddress::FUNC_CConsole__Execute(pConsole, pExecLine);
-}
-
-bool CSAMPFunctions::LoadFilterscript(const char *szName)
-{
-	return CAddress::FUNC_CFilterscripts__LoadFilterscript(pNetGame->pFilterScriptPool, szName);
-}
-
-bool CSAMPFunctions::UnLoadFilterscript(const char *szName)
-{
-	return CAddress::FUNC_CFilterscripts__UnLoadFilterscript(pNetGame->pFilterScriptPool, szName);
 }
 
 void CSAMPFunctions::SpawnPlayer(int playerid)

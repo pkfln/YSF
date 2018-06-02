@@ -49,7 +49,6 @@
 
 //----------------------------------------------------
 subhook_t SetWeather_hook;
-subhook_t SetGravity_hook;
 subhook_t Namecheck_hook;
 subhook_t amx_Register_hook;
 subhook_t logprintf_hook;
@@ -92,23 +91,6 @@ void HOOK_THISCALL(HOOK_CNetGame__SetWeather, void *thisptr, BYTE weatherid)
 
 	CAddress::FUNC_CNetGame__SetWeather(thisptr, weatherid);
 	subhook_install(SetWeather_hook);
-}
-
-//----------------------------------------------------
-
-void HOOK_THISCALL(HOOK_CNetGame__SetGravity, void *thisptr, float gravity)
-{
-	subhook_remove(SetGravity_hook);
-
-	auto &pool = CServer::Get()->PlayerPool;
-	for (WORD i = 0; i != MAX_PLAYERS; ++i)
-	{
-		if (IsPlayerConnected(i))
-			pool.Extra(i).fGravity = gravity;
-	}
-
-	CAddress::FUNC_CNetGame__SetGravity(thisptr, gravity);
-	subhook_install(SetGravity_hook);
 }
 
 //----------------------------------------------------
@@ -893,7 +875,6 @@ subhook_t Hook(ADDR<TFunc> &func, THook hook)
 void InstallPreHooks()
 {
 	SetWeather_hook = Hook(CAddress::FUNC_CNetGame__SetWeather, HOOK_CNetGame__SetWeather);
-	SetGravity_hook = Hook(CAddress::FUNC_CNetGame__SetGravity, HOOK_CNetGame__SetGravity);
 	Namecheck_hook = Hook(CAddress::FUNC_ContainsInvalidChars, HOOK_ContainsInvalidChars);
 	amx_Register_hook = subhook_new(reinterpret_cast<void*>(((FUNC_amx_Register*)pAMXFunctions)[PLUGIN_AMX_EXPORT_Register]), reinterpret_cast<void*>(HOOK_amx_Register), static_cast<subhook_options_t>(NULL));
 	subhook_install(amx_Register_hook);
@@ -950,7 +931,6 @@ void InstallPostHooks()
 void UninstallHooks()
 {
 	SUBHOOK_REMOVE(SetWeather_hook);
-	SUBHOOK_REMOVE(SetGravity_hook);
 	SUBHOOK_REMOVE(Namecheck_hook);
 	SUBHOOK_REMOVE(amx_Register_hook);
 	SUBHOOK_REMOVE(query_hook);

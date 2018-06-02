@@ -79,10 +79,6 @@ public:
 	void ClearBans() { m_BannedIPs.clear(); }
 	bool IsBanned(char* ip) { return m_BannedIPs.find(ip) != m_BannedIPs.end(); }
 
-	// Toggling rcon commands
-	bool ChangeRCONCommandName(std::string const &strCmd, std::string const &strNewCmd);
-	bool GetRCONCommandName(std::string const &strCmd, std::string &strNewCmd);
-
 	// Broadcasting console messages to players
 	void AddConsolePlayer(WORD playerid, DWORD color);
 	void RemoveConsolePlayer(WORD playerid); 
@@ -114,7 +110,6 @@ public:
 	void RebuildSyncData(RakNet::BitStream *bsSync, WORD toplayerid);
 	bool RebuildRPCData(BYTE uniqueID, RakNet::BitStream *bsSync, WORD playerid);
 
-	char* GetNPCCommandLine(WORD npcid);
 	int FindNPCProcessID(WORD npcid); 
 	bool CreatePlayerObjectLocalID(WORD playerid, WORD &objectid, bool playerobject);
 	bool MapPlayerObjectIDToLocalID(WORD playerid, WORD &objectid);

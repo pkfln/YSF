@@ -86,35 +86,6 @@ namespace Natives
 		return ret;
 	}
 
-	// native SetPlayerGravity(playerid, Float:gravity);
-	AMX_DECLARE_NATIVE(SetPlayerGravity)
-	{
-		CHECK_PARAMS(2, LOADED);
-
-		const int playerid = CScriptParams::Get()->ReadInt();
-		if (!IsPlayerConnected(playerid)) return 0;
-
-		// Update stored values
-		CPlayerData &data = CServer::Get()->PlayerPool.Extra(playerid);
-		data.fGravity = CScriptParams::Get()->ReadFloat();
-
-		RakNet::BitStream bs;
-		bs.Write(data.fGravity);
-		CSAMPFunctions::RPC(&RPC_SetGravity, &bs, HIGH_PRIORITY, RELIABLE_ORDERED, 0, CSAMPFunctions::GetPlayerIDFromIndex(playerid), 0, 0);
-		return 1;
-	}
-
-	// native Float:GetPlayerGravity(playerid);
-	AMX_DECLARE_NATIVE(GetPlayerGravity)
-	{
-		CHECK_PARAMS(1, LOADED);
-
-		const int playerid = CScriptParams::Get()->ReadInt();
-		if (!IsPlayerConnected(playerid)) return 0;
-
-		return amx_ftoc(CServer::Get()->PlayerPool.Extra(playerid).fGravity);
-	}
-
 	// native SetPlayerTeamForPlayer(playerid, teamplayerid, teamid);
 	AMX_DECLARE_NATIVE(SetPlayerTeamForPlayer)
 	{
@@ -1129,10 +1100,6 @@ static AMX_NATIVE_INFO native_list[] =
 	// Exclusive RPC broadcast
 	AMX_DEFINE_NATIVE(SetExclusiveBroadcast)
 	AMX_DEFINE_NATIVE(BroadcastToPlayer)
-
-	// Special
-	AMX_DEFINE_NATIVE(SetPlayerGravity)
-	AMX_DEFINE_NATIVE(GetPlayerGravity)
 
 	AMX_DEFINE_NATIVE(SetPlayerTeamForPlayer) // R5
 	AMX_DEFINE_NATIVE(GetPlayerTeamForPlayer) // R5

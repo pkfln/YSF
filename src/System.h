@@ -3,7 +3,6 @@
 
 #include <string>
 
-char* GetNPCCommandLine(int processId);
 int FindNPCProcessID(const char *name);
 void ExecuteCommand(const std::string &cmd, bool saveOutput, int index);
 bool FindFile(const char *szSearch, std::string &result, int count);

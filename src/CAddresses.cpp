@@ -72,10 +72,7 @@ DEFINE_FUNC_PTR(CConsole__SendRules);
 DEFINE_FUNC_PTR(CConsole__Execute);
 
 DEFINE_FUNC_PTR(CNetGame__SetWeather);
-DEFINE_FUNC_PTR(CNetGame__SetGravity);
 
-DEFINE_FUNC_PTR(CFilterscripts__LoadFilterscript);
-DEFINE_FUNC_PTR(CFilterscripts__UnLoadFilterscript);
 DEFINE_FUNC_PTR(ContainsInvalidChars);
 
 DEFINE_FUNC_PTR(CPlayer__SpawnForWorld);
@@ -142,10 +139,6 @@ void CAddress::Initialize(SAMPVersion sampVersion)
 	FUNC_CConsole__Execute =					FindPattern("\x55\x8B\xEC\x83\xE4\xF8\x81\xEC\x0C\x01\x00\x00", "xxxxxxxxxxxx");
 
 	FUNC_CNetGame__SetWeather =					FindPattern("\x6A\xFF\x68\x00\x00\x00\x00\x64\xA1\x00\x00\x00\x00\x50\x64\x89\x25\x00\x00\x00\x00\x81\xEC\x98\x01\x00\x00\x56\x8B\xF1", "xxx????xxxxxxxxxxxxxxxxx?xxxxx"); // 00490A40
-	FUNC_CNetGame__SetGravity =					FUNC_CNetGame__SetWeather + 0xD0; // 0x00490B10;
-
-	FUNC_CFilterscripts__LoadFilterscript =		FindPattern("\x8B\x44\x24\x04\x81\xEC\x04\x01\x00\x00", "xxxxxxxxxx");
-	FUNC_CFilterscripts__UnLoadFilterscript =	FindPattern("\xCC\x51\x53\x8B\x5C\x24\x0C\x55\x56\x57\x89", "xxxxxxxxxxx") + 0x1;
 
 	FUNC_ContainsInvalidChars =					FindPattern("\x8B\x4C\x24\x04\x8A\x01\x84\xC0", "xxxxxxxx");
 
@@ -192,10 +185,6 @@ void CAddress::Initialize(SAMPVersion sampVersion)
 	FUNC_CConsole__Execute =					FindPattern("\x55\x89\xE5\x57\x56\x53\x81\xEC\x3C\x01\x00\x00\x8B\x45\x0C", "xxxxxxxxxxxxxxx");
 
 	FUNC_CNetGame__SetWeather = 0x80AE6D0;
-	FUNC_CNetGame__SetGravity = 0x80AE7D0;
-
-	FUNC_CFilterscripts__LoadFilterscript =		FindPattern("\x89\x7D\x00\x8B\x45\x00\x8B\x7D\x00\x89\x5D\x00\x89\x44\x24\x00", "xx?xx?xx?xx?xxx?") - 0x9;
-	FUNC_CFilterscripts__UnLoadFilterscript =	FindPattern("\x31\xF6\x53\x83\xEC\x00\x8B\x45\x00\x8B\x7D\x00\x89\xC3", "xxxxx?xx?xx?xx") - 0x5;
 
 	FUNC_ContainsInvalidChars =					FindPattern("\x53\x8B\x5D\x00\x0F\xB6\x0B\x84\xC9\x74\x00\x66\x90", "xxx?xxxxxx?xx") - 0x3;
 
@@ -268,10 +257,6 @@ void CAddress::Initialize(SAMPVersion sampVersion)
 	FUNC_CConsole__Execute = 0x00490CE0;
 
 	FUNC_CNetGame__SetWeather = 0x00496240;
-	FUNC_CNetGame__SetGravity = 0x00496310;
-
-	FUNC_CFilterscripts__LoadFilterscript = 0x0046A9D0;
-	FUNC_CFilterscripts__UnLoadFilterscript = 0x0046D1C0;
 
 	FUNC_ContainsInvalidChars = 0x00468EE0;
 
@@ -318,10 +303,6 @@ void CAddress::Initialize(SAMPVersion sampVersion)
 	FUNC_CConsole__Execute = 0x080A8330;
 
 	FUNC_CNetGame__SetWeather = 0x080B7380;
-	FUNC_CNetGame__SetGravity = 0x080B7480;
-
-	FUNC_CFilterscripts__LoadFilterscript = 0x080A9980;
-	FUNC_CFilterscripts__UnLoadFilterscript = 0x080A9DB0;
 
 	FUNC_ContainsInvalidChars = 0x080E1220;
 
@@ -362,10 +343,6 @@ void CAddress::Initialize(SAMPVersion sampVersion)
 	logprintf("FUNC_CConsole__Execute: %X", FUNC_CConsole__Execute);
 
 	logprintf("FUNC_CNetGame__SetWeather: %X", FUNC_CNetGame__SetWeather);
-	logprintf("FUNC_CNetGame__SetGravity: %X", FUNC_CNetGame__SetGravity);
-
-	logprintf("FUNC_CFilterscripts__LoadFilterscript: %X", FUNC_CFilterscripts__LoadFilterscript);
-	logprintf("FUNC_CFilterscripts__UnLoadFilterscript: %X", FUNC_CFilterscripts__UnLoadFilterscript);
 
 	logprintf("FUNC_ContainsInvalidChars: %X", FUNC_ContainsInvalidChars);
 
